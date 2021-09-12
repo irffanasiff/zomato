@@ -1,17 +1,17 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const OrderSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Types.ObjectId,
-      ref: "Users",
+      ref: 'Users',
     },
     orderDetails: [
       {
-        food: { type: mongoose.Types.ObjectId, ref: "Foods" },
+        food: { type: mongoose.Types.ObjectId, ref: 'Foods' },
         quantity: { type: Number, required: true },
         paymode: { type: String, required: true },
-        status: { type: String, default: "Placed" },
+        status: { type: String, default: 'Placed' },
         paymentDetails: {
           itemTotal: { type: Number, required: true },
           promo: { type: Number, required: true },
@@ -29,4 +29,4 @@ const OrderSchema = new mongoose.Schema(
   }
 );
 
-export const OrderModel = mongoose.model("Orders", OrderSchema);
+export const OrderModel = mongoose.model('Orders', OrderSchema);
