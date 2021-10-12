@@ -1,4 +1,4 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose, { mongo } from 'mongoose';
 
 const FoodSchema = new mongoose.Schema(
   {
@@ -9,18 +9,18 @@ const FoodSchema = new mongoose.Schema(
     category: { type: String, required: true },
     photos: {
       type: mongoose.Types.ObjectId,
-      ref: "Images",
+      ref: 'Images',
     },
     price: { type: Number, default: 150, required: true },
     addOns: [
       {
         type: mongoose.Types.ObjectId,
-        ref: "Foods",
+        ref: 'Foods',
       },
     ],
     restaurant: {
       type: mongoose.Types.ObjectId,
-      ref: "Restaurants",
+      ref: 'Restaurants',
       required: true,
     },
   },
@@ -29,4 +29,4 @@ const FoodSchema = new mongoose.Schema(
   }
 );
 
-export const FoodModel = mongoose.model("Foods", FoodSchema);
+export const FoodModel = mongoose.model('Foods', FoodSchema);

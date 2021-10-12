@@ -3,7 +3,7 @@ require('dotenv').config();
 
 // Libraries
 import express from 'express';
-import cors from 'cors'; //cross origin requesrt
+import cors from 'cors'; //cross origin requests
 import helmet from 'helmet'; //for an added layer of security
 
 // microservices routes
@@ -21,7 +21,7 @@ zomato.use(helmet());
 zomato.use(cors());
 
 // Application Route
-zomato.use('/auth', Auth)
+zomato.use('/auth', Auth);
 
 zomato.get('/', (req, res) => {
   res.json({ message: 'setup sucessful' });
