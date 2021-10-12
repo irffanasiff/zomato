@@ -20,7 +20,9 @@ zomato.use(express.urlencoded({ extended: false }));
 zomato.use(helmet());
 zomato.use(cors());
 
-// Application Route
+// Application Routes
+
+// route = localhost:4000/auth/signup
 zomato.use('/auth', Auth);
 
 zomato.get('/', (req, res) => {
@@ -30,7 +32,7 @@ zomato.get('/', (req, res) => {
 zomato.listen(4000, () => {
   ConnectDB()
     .then(() => {
-      console.log('server is running 🚀');
+      console.log('server is up and running 🚀');
     })
     .catch((error) => {
       console.log('server is running but database connection is failed');
