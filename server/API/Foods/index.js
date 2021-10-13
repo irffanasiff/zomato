@@ -13,7 +13,7 @@ const Router = express.Router();
     Mehtod          GET
 */
 
-Router.get('/:_id', (req, res) => {
+Router.get('/:_id', async (req, res) => {
   try {
     const { _id } = req.params;
     const foods = await FoodModel.find({ restaurant: _id });
