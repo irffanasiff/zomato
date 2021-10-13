@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+
 const UserSchema = new mongoose.Schema(
   {
     fullname: {
@@ -34,8 +36,12 @@ const UserSchema = new mongoose.Schema(
   }
 );
 
-UserSchema.statics.findByEmailAndPhone = async (email, phoneNumber) => {
-  //check whether email exist
+UserSchema.methods.generateJwtToken = function () {
+  return jwt.sign({ user: this._id.toString() }, 'ZomatoApp');
+};
+
+UserSchema.statics.findByEmailAndPhone = async ({ email, phoneNumber }) => {
+  //check whether user exist
   const checkUserByEmail = await UserModel.findOne({ email });
   const checkUserByPhone = await UserModel.findOne({ phoneNumber });
 
@@ -46,11 +52,25 @@ UserSchema.statics.findByEmailAndPhone = async (email, phoneNumber) => {
   return false;
 };
 
+UserSchema.statics.findByEmailAndPassword = async ({ email, password }) => {
+  //check whether the email exists
+  const user = await UserModel.findOne({ email });
+  if (!user) throw new Error('User does not exist');
+
+  //compare password
+  const doesPasswordMatch = await bcrypt.compare(password, user.password);
+
+  if (!doesPasswordMatch) {
+    throw new Error('Invalid password');
+  }
+  return user;
+};
+
 UserSchema.pre('save', function (next) {
   const user = this;
 
   //if password is modified
-  if (user.isModified('password')) return next();
+  if (!user.isModified('password')) return next();
 
   //generate bcrypt salt
   bcrypt.genSalt(8, (error, salt) => {
