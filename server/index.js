@@ -12,6 +12,8 @@ import googleAuthConfig from './config/google.config';
 
 // microservices routes
 import Auth from './API/Auth';
+import Restaurant from './API/Restaurant';
+import Food from './API/Foods';
 
 // Database Connection
 import ConnectDB from './database/connection';
@@ -23,13 +25,16 @@ zomato.use(express.json());
 zomato.use(express.urlencoded({ extended: false }));
 zomato.use(helmet());
 zomato.use(cors());
+zomato.use(passport.initialize());
+zomato.use(passport.session());
 
-//passport configuration
+// passport cofiguration
 googleAuthConfig(passport);
 
-// Application Routes
-// route = localhost:4000/auth/signup
+// Application Routes - route = localhost:4000/auth/signup
 zomato.use('/auth', Auth);
+zomato.use('/restaurant', Restaurant);
+zomato.use('/food', Food);
 
 zomato.get('/', (req, res) => {
   res.json({ message: 'setup sucessful' });

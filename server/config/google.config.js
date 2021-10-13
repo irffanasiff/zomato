@@ -12,7 +12,7 @@ export default (passport) => {
     new GoogleStrategy(
       {
         clientID: process.env.GOOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOOGLE_CLIENT_SECRET,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: 'http://localhost:4000/auth/google/callback',
       },
       async (accessToken, refreshToken, profile, done) => {
@@ -46,6 +46,8 @@ export default (passport) => {
       }
     )
   );
+
   passport.serializeUser((userData, done) => done(null, { ...userData }));
   passport.deserializeUser((id, done) => done(null, id));
 };
+//,
