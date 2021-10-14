@@ -1,2 +1,4 @@
 server/node_modules
 server/.env
+server/utils/AWS/s3.js
+server/config/google.config.js
