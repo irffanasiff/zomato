@@ -1,12 +1,13 @@
 import React from 'react';
+import FoodTab from '../Components/FoodTab';
 import Navbar from '../Components/Navbar';
+
 const HomeLayout = (props) => {
   return (
     <>
-      <div className='container mx-auto'>
-        <Navbar />
-        {props.children}
-      </div>
+      <Navbar />
+      <div className='container mx-auto'>{props.children}</div>
+      <FoodTab />
     </>
   );
 };
