@@ -6,6 +6,9 @@ import { UserModel } from '../../database/allModels';
 
 const Router = express.Router();
 
+// validation
+import { ValidateSignup, ValidateSignin } from '../../validation/auth';
+
 /*
    Router    /signup
    Des       singup with email and password
@@ -16,6 +19,8 @@ const Router = express.Router();
 
 Router.post('/signup', async (req, res) => {
   try {
+    await ValidateSignup(req.body.credentials);
+
     // checking if user exist
     await UserModel.findByEmailAndPhone(req.body.credentials);
 
@@ -41,7 +46,7 @@ Router.post('/signup', async (req, res) => {
 
 Router.post('/signin', async (req, res) => {
   try {
-    //await ValidateSignin(req.body.credentials);
+    await ValidateSignin(req.body.credentials);
 
     const user = await UserModel.findByEmailAndPassword(req.body.credentials);
 
