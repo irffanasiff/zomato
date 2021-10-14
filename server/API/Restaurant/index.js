@@ -5,7 +5,6 @@ import passport from 'passport';
 // Database modal
 import { RestaurantModel } from '../../database/allModels';
 
-validation;
 import {
   ValidateRestaurantCity,
   ValidateRestaurantSearchString,
