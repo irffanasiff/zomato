@@ -8,8 +8,8 @@ import { AiOutlineArrowLeft } from 'react-icons/ai';
 const MobileNav = () => {
   return (
     <div className='flex w-full items-center justify-between lg:hidden'>
-      <AiOutlineArrowLeft />
       <div className='w-28'>
+        {/* <AiOutlineArrowLeft /> */}
         <img
           src='https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png'
           alt='logo'

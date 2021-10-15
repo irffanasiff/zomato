@@ -10,6 +10,7 @@ import Temp from './Components/temp';
 // pages
 import Home from './Page/Home';
 import Overview from './Page/Restaurant/Overview';
+import OrderOnline from './Page/Restaurant/OrderOnline';
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
       <RestaurantLayoutHOC
         path='/restaurant/:id/order-online'
         exact
-        component={Temp}
+        component={OrderOnline}
       />
       <RestaurantLayoutHOC path='/restaurant/:id/menu' exact component={Temp} />
       <RestaurantLayoutHOC
@@ -51,11 +52,3 @@ function App() {
 
 export default App;
 
-// :type
-
-// delivery
-// dining
-// nightlife
-// nutrition
-
-// master -> type
