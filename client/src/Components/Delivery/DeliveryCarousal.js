@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 
 // components
-import DeliveryCatagory from './DeliveryCategory';
+import DeliveryCatagory from './DeliveryCatagory';
 import { NextArrow, PrevArrow } from '../CarousalArrow';
 
 const DeliveryCarousal = () => {

@@ -1,9 +1,9 @@
-import React from "react";
-import Slider from "react-slick";
+import React from 'react';
+import Slider from 'react-slick';
 
 // components
-import PictureCarousalCard from "../PictureCarousal";
-import { NextArrow, PrevArrow } from "../CarousalArrow";
+import PictureCarousalCard from '../PictureCarousal';
+import { NextArrow, PrevArrow } from '../CarousalArrow';
 
 const DiningCarousal = () => {
   const settings = {
@@ -43,7 +43,7 @@ const DiningCarousal = () => {
     ],
   };
   return (
-    <div className="w-full">
+    <div className='w-full'>
       <Slider {...settings}>
         <PictureCarousalCard />
         <PictureCarousalCard />

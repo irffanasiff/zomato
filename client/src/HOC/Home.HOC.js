@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom';
-
-import HomeLayout from '../Layout/HomeLayout';
+import HomeLayout from '../Layout/Home.layout';
 
 const HomeLayoutHOC = ({ component: Component, ...rest }) => {
   return (
@@ -10,7 +9,7 @@ const HomeLayoutHOC = ({ component: Component, ...rest }) => {
         {...rest}
         component={(props) => (
           <HomeLayout>
-            <Component {...rest} />
+            <Component {...props} />
           </HomeLayout>
         )}
       />

@@ -1,15 +1,55 @@
-import HomeLayoutHOC from './HOC/Home.HOC';
-import React, { Component } from 'react';
-import Temp from './Components/temp';
-import Master from './Components/master'
+import { Route, Redirect } from 'react-router-dom';
+import React from 'react';
 
-function App(props) {
+// HOC
+import HomeLayoutHOC from './HOC/Home.HOC';
+import RestaurantLayoutHOC from './HOC/Restaurant.HOC';
+
+import Temp from './Components/temp';
+
+// pages
+import Home from './Page/Home';
+
+function App() {
   return (
     <>
-      <HomeLayoutHOC path='/' exact component={Temp} />
-      <HomeLayoutHOC path='/:type' exact component={Master} />
+      <Route path='/' exact>
+        <Redirect to='/delivery' />
+      </Route>
+      <HomeLayoutHOC path='/:type' exact component={Home} />
+      <RestaurantLayoutHOC path='/restaurant/:id' exact component={Temp} />
+      <RestaurantLayoutHOC
+        path='/restaurant/:id/overview'
+        exact
+        component={Temp}
+      />
+      <RestaurantLayoutHOC
+        path='/restaurant/:id/order-online'
+        exact
+        component={Temp}
+      />
+      <RestaurantLayoutHOC path='/restaurant/:id/menu' exact component={Temp} />
+      <RestaurantLayoutHOC
+        path='/restaurant/:id/reviews'
+        exact
+        component={Temp}
+      />
+      <RestaurantLayoutHOC
+        path='/restaurant/:id/photos'
+        exact
+        component={Temp}
+      />
     </>
   );
 }
 
 export default App;
+
+// :type
+
+// delivery
+// dining
+// nightlife
+// nutrition
+
+// master -> type

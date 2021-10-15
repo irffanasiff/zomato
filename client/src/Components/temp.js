@@ -1,7 +1,7 @@
 import React from 'react';
 
-const temp = () => {
-  return <div>Temp</div>;
+const Temp = () => {
+  return <div>Hello this is a temp component</div>;
 };
 
-export default temp;
+export default Temp;
