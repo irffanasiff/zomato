@@ -9,6 +9,7 @@ import Temp from './Components/temp';
 
 // pages
 import Home from './Page/Home';
+import Overview from './Page/Restaurant/Overview';
 
 function App() {
   return (
@@ -16,12 +17,17 @@ function App() {
       <Route path='/' exact>
         <Redirect to='/delivery' />
       </Route>
+
       <HomeLayoutHOC path='/:type' exact component={Home} />
-      <RestaurantLayoutHOC path='/restaurant/:id' exact component={Temp} />
+
+      <Route path='/restaurant/:id' exact>
+        <Redirect to='/restaurant/:id/overview' />
+      </Route>
+      
       <RestaurantLayoutHOC
         path='/restaurant/:id/overview'
         exact
-        component={Temp}
+        component={Overview}
       />
       <RestaurantLayoutHOC
         path='/restaurant/:id/order-online'

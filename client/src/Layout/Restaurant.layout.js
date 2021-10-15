@@ -10,7 +10,7 @@ import InfoButtons from '../Components/restaurant/InfoButtons';
 import RestaurantInfo from '../Components/restaurant/RestaurantInfo';
 import TabContainer from '../Components/restaurant/Tabs';
 
-const RestaurantLayout = () => {
+const RestaurantLayout = (props) => {
   return (
     <>
       {' '}
@@ -18,6 +18,7 @@ const RestaurantLayout = () => {
       <div className='container mx-auto px-4 lg:px-20 '>
         <ImageGrid
           images={[
+            'https://b.zmtcdn.com/data/pictures/2/18621252/f737723f080910e46c451c51b9bbd717.jpg?output-format=webp',
             'https://b.zmtcdn.com/data/pictures/2/18621252/f737723f080910e46c451c51b9bbd717.jpg?output-format=webp',
             'https://b.zmtcdn.com/data/pictures/2/18621252/f737723f080910e46c451c51b9bbd717.jpg?output-format=webp',
             'https://b.zmtcdn.com/data/pictures/2/18621252/f737723f080910e46c451c51b9bbd717.jpg?output-format=webp',
@@ -48,6 +49,7 @@ const RestaurantLayout = () => {
         <div className='my-4'>
           <TabContainer />
         </div>
+        <div className='relative'>{props.children}</div>
       </div>
     </>
   );
