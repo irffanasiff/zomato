@@ -30,4 +30,4 @@ const PictureCarousalCard = () => {
   );
 };
 
-export default PictureCarousalCard;
+export default PictureCarousalCard; 

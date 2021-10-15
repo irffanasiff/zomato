@@ -13,8 +13,3 @@ function App(props) {
 }
 
 export default App;
-
-// Deilivery
-// Dining
-// Night Life
-// Nutrition
