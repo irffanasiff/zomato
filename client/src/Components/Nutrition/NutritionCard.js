@@ -1,68 +1,57 @@
 import React from 'react';
-import Slider from 'react-slick';
+import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs';
+import ReactStars from 'react-rating-stars-component';
 
-import NutritionCarousalCard from './NutritionCarousalCard';
-import { NextArrow, PrevArrow } from '../CarousalArrow';
-
-const NutritionCarousal = () => {
-  const categories = [
-    {
-      image:
-        'https://dote.zmtcdn.com/prod/data/admin_assets/images/baf809f0523c43d29f51d1e05f9f46be_1629263595.png?output-format=webp',
-      title: 'Protien & Fitness',
-    },
-    {
-      image:
-        'https://dote.zmtcdn.com/prod/data/admin_assets/images/de47fcc91ced4e33b354909e897456e8_1628243615.png?output-format=webp',
-      title: 'Sleep & stress',
-    },
-    {
-      image:
-        'https://dote.zmtcdn.com/prod/data/admin_assets/images/89fdc1246c12461db02d853a513ab616_1628243591.png?output-format=webp',
-      title: 'Digestion & weight Loss',
-    },
-    {
-      image:
-        'https://dote.zmtcdn.com/prod/data/admin_assets/images/473ea322835ea870c0658b883c22dcf6_1626688305.png?output-format=webp',
-      title: 'Omegas & CoQ10',
-    },
-    {
-      image:
-        'https://dote.zmtcdn.com/prod/data/admin_assets/images/76336cff326938873f922d4c1c72066c_1628243556.png?output-format=webp',
-      title: 'Beauty & Skin Care',
-    },
-    {
-      image:
-        'https://dote.zmtcdn.com/prod/data/admin_assets/images/c021611d9bce8289f48f59303b2d0fc6_1628243496.png?output-format=webp',
-      title: 'Immunity & Bones',
-    },
-  ];
-  const settings = {
-    arrows: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-  };
+const NutritionCard = (props) => {
   return (
-    <>
-      <div className='lg:hidden flex gap-3 lg:gap-0 flex-wrap justify-between'>
-        {categories.map((food) => (
-          <NutritionCarousalCard {...food} />
-        ))}
+    <div className=' w-full p-4 md:w-1/2 lg:w-1/3'>
+      <div className='w-full h-full bg-white rounded-2xl shadow-lg '>
+        <div className={`w-full p-4 h-56 rounded-t-2xl bg-${props.bg}-100`}>
+          <img src={props.image} alt='suppliments' className='w-full h-full' />
+        </div>
+        <div className='p-3 flex flex-col gap-3'>
+          <div className='flex mt-2 items-center gap-3'>
+            <div className='w-4 h-4'>
+              <img
+                src='https://www.pngkey.com/png/detail/261-2619381_chitr-veg-symbol-svg-veg-and-non-veg.png'
+                alt='veg'
+                className='w-full h-full'
+              />
+            </div>
+            <ReactStars
+              count={5}
+              //   onChange={ratingChanged}
+              size={16}
+              isHalf={true}
+              value={3}
+              emptyIcon={<BsStar />}
+              halfIcon={<BsStarHalf />}
+              fullIcon={<BsStarFill />}
+              activeColor='#ffd700'
+            />
+            <span className='text-gray-400'>15</span>
+          </div>
+          <h3 className='text-xl font-bold text-gray-700'>
+            Burn - Weight Balanace
+          </h3>
+          <p className='text-sm font-light text-gray-400'>
+            This formula with VFill™ technology will help improve metabolism and
+            support fat burn.
+          </p>
+          <div className='mt-4'>
+            <hr />
+          </div>
+          <div>
+            <span>
+              <s className='text-gray-300 font-light mr-3'>₹600</s>{' '}
+              <strong>₹ 320</strong>
+            </span>
+            <p>Monthly pack - 30 capsules</p>
+          </div>
+        </div>
       </div>
-
-      <div className='hidden  lg:block'>
-        <Slider {...settings}>
-          {categories.map((food) => (
-            <NutritionCarousalCard {...food} />
-          ))}
-        </Slider>
-      </div>
-    </>
+    </div>
   );
 };
 
-export default NutritionCarousal;
+export default NutritionCard;
