@@ -10,7 +10,9 @@ import Temp from './Components/temp';
 // pages
 import Home from './Page/Home';
 import Overview from './Page/Restaurant/Overview';
-import OrderOnline from './Page/Restaurant/OrderOnline';
+// import OrderOnline from './Page/Restaurant/OrderOnline';
+// import Reviews from './Page/Restaurant/Reviews'
+// import Photos from './Page/Restaurant/Photos';
 
 function App() {
   return (
@@ -30,7 +32,7 @@ function App() {
         exact
         component={Overview}
       />
-      <RestaurantLayoutHOC
+      {/* <RestaurantLayoutHOC
         path='/restaurant/:id/order-online'
         exact
         component={OrderOnline}
@@ -39,13 +41,13 @@ function App() {
       <RestaurantLayoutHOC
         path='/restaurant/:id/reviews'
         exact
-        component={Temp}
+        component={Reviews}
       />
       <RestaurantLayoutHOC
         path='/restaurant/:id/photos'
         exact
-        component={Temp}
-      />
+        component={Photos}
+      /> */}
     </>
   );
 }

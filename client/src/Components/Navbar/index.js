@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaUserAlt } from 'react-icons/fa';
 import { HiLocationMarker } from 'react-icons/hi';
 import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 import { RiSearch2Line } from 'react-icons/ri';
+import SignIn from '.././Auth/Signin';
+import UserDropdown from './UserDropdown';
 
-const MobileNav = () => {
+const MobileNav = ({ setOpenSignin }) => {
+  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+  const toggleDropDown = () => {
+    setIsDropDownOpen(true);
+  };
   return (
     <div className='flex w-full items-center justify-between lg:hidden'>
       <div className='w-28'>
@@ -14,13 +20,22 @@ const MobileNav = () => {
           className='w-full h-full'
         />
       </div>
-      <div className='flex items-center gap-3'>
+      <div className='flex items-center gap-3 relative'>
         <button className='bg-zomato-400 text-white py-2 px-3 rounded-full'>
           Use App
         </button>
-        <span className='border p-2 border-gray-300 text-zomato-400 rounded-full'>
+        <span
+          onClick={toggleDropDown}
+          className='border p-2 border-gray-300 text-zomato-400 rounded-full'
+        >
           <FaUserAlt />
         </span>
+        {isDropDownOpen && (
+          <div className='absolute -bottom-16 -right-4 w-full z-20 flex flex-col gap-2'>
+            <button>Sign In</button>
+            <button>Sign Up</button>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -74,11 +89,15 @@ const LargeNav = () => {
 };
 
 const Navbar = () => {
+  const [openSignin, setOpenSignin] = useState(false);
+  const [openSignup, setOpenSignup] = useState(false);
+
   return (
     <>
+      <SignIn isOpen={openSignin} setIsOpen={setOpenSignin} />
       <nav className='p-4 flex bg-white shadow-md lg:shadow-none w-full items-center'>
-        <MobileNav />
-        <LargeNav />
+        <MobileNav SignIn={{ openSignin, setOpenSignin }} />
+        <LargeNav SignIn={{ openSignin, setOpenSignin }} />
       </nav>
     </>
   );
