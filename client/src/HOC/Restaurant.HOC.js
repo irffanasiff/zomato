@@ -19,4 +19,4 @@ const RestaurantLayoutHOC = ({ component: Component, ...rest }) => {
   );
 };
 
-export default RestaurantLayoutHOC;
+export { RestaurantLayoutHOC };

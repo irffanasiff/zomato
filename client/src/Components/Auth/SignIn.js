@@ -18,7 +18,7 @@ export default function Singin({ isOpen, setIsOpen }) {
           <div className='min-h-screen px-4 text-center'>
             <Transition.Child
               as={Fragment}
-              enter='ease-out duration-300'
+              enPhotosPhotoster='ease-out duration-300'
               enterFrom='opacity-0'
               enterTo='opacity-100'
               leave='ease-in duration-200'

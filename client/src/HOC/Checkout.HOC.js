@@ -1,20 +1,20 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import HomeLayout from '../Layout/Home.layout';
+import CheckoutLayout from '../Layout/Checkout.layout';
 
-const HomeLayoutHOC = ({ component: Component, ...rest }) => {
+const CheckoutLayoutHOC = ({ component: Component, ...rest }) => {
   return (
     <>
       <Route
         {...rest}
         component={(props) => (
-          <HomeLayout>
+          <CheckoutLayout>
             <Component {...props} />
-          </HomeLayout>
+          </CheckoutLayout>
         )}
       />
     </>
   );
 };
 
-export { HomeLayoutHOC };
+export {CheckoutLayoutHOC};
