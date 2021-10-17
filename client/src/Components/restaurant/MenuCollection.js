@@ -3,23 +3,23 @@ import ImageViewer from 'react-simple-image-viewer';
 
 const MenuCollection = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState(0);
-
+  const [CurrentImg, setCurrentImg] = useState(0);
   const closeViewer = () => setIsMenuOpen(false);
   const openViewer = () => setIsMenuOpen(true);
 
   return (
     <>
-      {isMenuOpen && (<ImageViewer
-          src={ props.image }
-          currentIndex={ currentImage }
-          disableScroll={ false }
-          closeOnClickOutside={ true }
-          onClose={ closeViewer }
-        />)}
+      {isMenuOpen && (
+        <ImageViewer
+          src={props.image}
+          currentIndex={CurrentImg}
+          disableScroll={false}
+          onClose={closeViewer}
+        />
+      )}
       <div
-        onClick={openViewer}
         className='w-32 h-32 md:w-48 flex flex-col md:h-48'
+        onClick={openViewer}
       >
         <div className='w-full h-full overflow-hidden  rounded-lg'>
           <img

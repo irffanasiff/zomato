@@ -17,4 +17,4 @@ const CheckoutLayoutHOC = ({ component: Component, ...rest }) => {
   );
 };
 
-export {CheckoutLayoutHOC};
+export { CheckoutLayoutHOC };

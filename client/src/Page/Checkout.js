@@ -50,5 +50,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
- 
+export { Checkout };

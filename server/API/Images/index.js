@@ -16,7 +16,7 @@ const upload = multer({ storage });
    Access    Public
    Method    POST
  */
-   redirecredirec
+
 Router.get('/:_id', async (req, res) => {
   try {
     const image = await ImageModel.findById(req.params._id);

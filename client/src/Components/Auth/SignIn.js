@@ -1,11 +1,35 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
+import { useDispatch } from 'react-redux';
 
-export default function Singin({ isOpen, setIsOpen }) {
+import { signIn } from '../../Redux/Reducer/Auth/Auth.action';
+
+export default function SignIn({ isOpen, setIsOpen }) {
+  const [userData, setUserData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const dispatch = useDispatch();
+
+  const handleChange = (e) =>
+    setUserData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
   function closeModal() {
     setIsOpen(false);
   }
+
+  const submit = () => {
+    setUserData({
+      email: '',
+      password: '',
+    });
+    dispatch(signIn(userData));
+  };
+
+  const googlesignin = () =>
+    (window.location.href = 'http://localhost:4000/auth/google');
 
   return (
     <>
@@ -15,10 +39,11 @@ export default function Singin({ isOpen, setIsOpen }) {
           className='fixed inset-0 z-10 overflow-y-auto'
           onClose={closeModal}
         >
+          <Dialog.Overlay className='fixed inset-0 bg-black opacity-70 z-5' />
           <div className='min-h-screen px-4 text-center'>
             <Transition.Child
               as={Fragment}
-              enPhotosPhotoster='ease-out duration-300'
+              enter='ease-out duration-300'
               enterFrom='opacity-0'
               enterTo='opacity-100'
               leave='ease-in duration-200'
@@ -48,36 +73,45 @@ export default function Singin({ isOpen, setIsOpen }) {
                 <Dialog.Title
                   as='h3'
                   className='text-lg font-medium leading-6 text-gray-900'
-                >
-                  Sign In
-                </Dialog.Title>
-                <div className='mt-2 w-full'>
-                  <button className='flex items-center gap-2 w-full border border-gray-400 bg-white text-grey-700 hover:bg-gray-200'>
-                    Signin with google <FcGoogle />
+                ></Dialog.Title>
+                <div className='mt-2 flex flex-col gap-3 w-full'>
+                  <button
+                    onClick={googlesignin}
+                    className='py-2 justify-center rounded-lg flex items-center gap-2 w-full border border-gray-400 bg-white text-gray-700 hover:bg-gray-100'
+                  >
+                    Signin With Google <FcGoogle />
                   </button>
-                  <form action=''>
-                    <div>
-                      <div className=' w-full flex flex-col gap-2'>
-                        <label htmlFor='email'>Email</label>
-                        <input
-                          type='text'
-                          id='email'
-                          placeholder='email@email.com'
-                          className='w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400'
-                        />
-                      </div>
-                      <div className=' w-full flex flex-col gap-2'>
-                        <label htmlFor='Password'>Password</label>
-                        <input
-                          type='text'
-                          id='email'
-                          placeholder='********'
-                          className='w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400'
-                        />
-                      </div>
-                      <div className='w-full bg-zomato-400 text-white py-2 rounded-lg'>
-                        Sign in
-                      </div>
+
+                  <form className='flex flex-col gap-3'>
+                    <div className=' w-full flex flex-col gap-2'>
+                      <label htmlFor='email'>Email</label>
+                      <input
+                        type='text'
+                        id='email'
+                        name='email'
+                        onChange={handleChange}
+                        value={userData.email}
+                        placeholder='email@email.com'
+                        className='w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400'
+                      />
+                    </div>
+                    <div className=' w-full flex flex-col gap-2'>
+                      <label htmlFor='password'>Password</label>
+                      <input
+                        type='password'
+                        id='password'
+                        placeholder='*********'
+                        value={userData.password}
+                        name='password'
+                        onChange={handleChange}
+                        className='w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400'
+                      />
+                    </div>
+                    <div
+                      onClick={submit}
+                      className='w-full  text-center bg-zomato-400 text-white py-2 rounded-lg'
+                    >
+                      Sign in
                     </div>
                   </form>
                 </div>
